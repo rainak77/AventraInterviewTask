@@ -1,0 +1,42 @@
+﻿@model IEnumerable<AventraInterviewTask.Models.EventActionItem>
+
+<h4>EventActionItem</h4>
+
+<div class="border backgroundWhite">
+    <h3 class="col-6">
+        <a asp-action="Create">Create New</a>
+    </h3>
+
+    <br />
+
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary'">
+                    <th>@Html.DisplayNameFor(m => m.EventActionType)</th>
+                    <th>@Html.DisplayNameFor(m => m.EventCategory)</th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+
+                <td> @Html.DisplayFor(m => item.EventActionType)</td>
+                <td> @Html.DisplayFor(m => item.EventCategory.EventType)</td>
+            </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No Event Action Exist</p>
+        }
+    </div>
+</div>
+<br />
+<div>
+    <button>
+     <a asp-action="Index">Back to List</a>
+    </button>
+</div>
+

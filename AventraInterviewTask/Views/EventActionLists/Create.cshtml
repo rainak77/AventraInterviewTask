@@ -1,0 +1,46 @@
+﻿@model AventraInterviewTask.Models.ViewModels.EventAndEvActionViewModel
+@using AventraInterviewTask.Extensions
+
+
+<h4>Create EventActionItem</h4>
+
+<div class="border backgroundWhite row">
+    <div class="col-8 border-right">
+        <br />
+        <form method="post" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="EventActionItem.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold"></label>
+                </div>
+                <div class="col-5">
+                    <select class="form-control"
+                            asp-for="EventActionItem.EventCategoryId"
+                            asp-items="Model.EventCategoryList.ToSelectListItem(Model.EventActionItem.EventCategoryId)">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="EventActionItem.EventActionType" class="col-form-label font-weight-bold font-weight-bold"></label>
+                </div>
+                <div class="col-5">
+                    <input asp-for="EventActionItem.EventActionType" class="form-control" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+
+
+

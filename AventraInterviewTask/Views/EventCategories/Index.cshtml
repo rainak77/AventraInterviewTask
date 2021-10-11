@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EventCategory>
+
+<h1 class="text-center">EventCategory</h1>
+
+<div class="border backgroundWhite">
+    <h3 class="col-6">
+        <a asp-action="Create">Create New</a>
+    </h3>
+   
+    <div>
+        @if (Model.Count() > 0)
+        {
+            <table class="table table-striped border">
+                <tr class="table-secondary'">
+                    <th>@Html.DisplayNameFor(m => m.EventType) </th>
+                    <th>@Html.DisplayNameFor(m => m.EventName) </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+            <tr>
+
+                <td> @Html.DisplayFor(m => item.EventType)</td>
+                <td> @Html.DisplayFor(m => item.EventName)</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <p>No category Exist</p>
+        }
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

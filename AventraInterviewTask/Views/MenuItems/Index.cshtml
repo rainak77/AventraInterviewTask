@@ -1,0 +1,101 @@
+﻿@model IEnumerable<AventraInterviewTask.Models.MenuItem>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EventType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventActionType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupportEmailCC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MailTemplate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Validate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HttpMethod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedHttpStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Comment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxRecordsPerFile)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventActionType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupportEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupportEmailCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MailTemplate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Validate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HttpMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedHttpStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxRecordsPerFile)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
