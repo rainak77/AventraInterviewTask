@@ -2,18 +2,18 @@
 
 namespace AventraInterviewTask.Migrations
 {
-    public partial class MenuIt : Migration
+    public partial class EventActionProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "MenuItem",
+                name: "EventActionProperty",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    EventType = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EventActionType = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EventCategoryId = table.Column<int>(type: "int", nullable: false),
+                    EventActionItemId = table.Column<int>(type: "int", nullable: false),
                     SupportEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SupportEmailCC = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     MailTemplate = table.Column<int>(type: "int", nullable: false),
@@ -28,14 +28,36 @@ namespace AventraInterviewTask.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MenuItem", x => x.Id);
+                    table.PrimaryKey("PK_EventActionProperty", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_EventActionProperty_EventActionItem_EventActionItemId",
+                        column: x => x.EventActionItemId,
+                        principalTable: "EventActionItem",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_EventActionProperty_EventCategory_EventCategoryId",
+                        column: x => x.EventCategoryId,
+                        principalTable: "EventCategory",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventActionProperty_EventActionItemId",
+                table: "EventActionProperty",
+                column: "EventActionItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EventActionProperty_EventCategoryId",
+                table: "EventActionProperty",
+                column: "EventCategoryId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MenuItem");
+                name: "EventActionProperty");
         }
     }
 }

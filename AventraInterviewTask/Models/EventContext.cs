@@ -12,9 +12,8 @@ namespace AventraInterviewTask.Models
 
         public DbSet<EventCategory> EventCategory { get; set; }
         public DbSet<EventActionItem> EventActionItem { get; set; }
-
        
-        public DbSet<MenuItem> MenuItem { get; set; }
+        public DbSet<EventActionProperty> EventActionProperty { get; set; }
 
 
     }

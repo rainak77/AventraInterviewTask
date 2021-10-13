@@ -1,16 +1,22 @@
-﻿@*@model IEnumerable<AventraInterviewTask.Models.MenuItem>
+﻿@model IEnumerable<AventraInterviewTask.Models.EventActionProperty>
 
-<p>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<h4>
     <a asp-action="Create">Create New</a>
-</p>
+</h4>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EventType)
+                @Html.DisplayNameFor(model => model.EventCategory)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventActionType)
+                @Html.DisplayNameFor(model => model.EventActionItem)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SupportEmail)
@@ -52,10 +58,10 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.EventType)
+                @Html.DisplayFor(modelItem => item.EventCategory.EventType)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EventActionType)
+                @Html.DisplayFor(modelItem => item.EventActionItem.EventActionType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SupportEmail)
@@ -90,12 +96,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MaxRecordsPerFile)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            
         </tr>
 }
     </tbody>
-</table>*@
+</table>

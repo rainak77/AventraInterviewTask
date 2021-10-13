@@ -1,0 +1,90 @@
+﻿@model AventraInterviewTask.Models.ViewModels.EventActionPropertyViewModel
+@using AventraInterviewTask.Extensions
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>EventActionProperty</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="EventActionProperty.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
+                <select class="form-control"
+                        asp-for="EventActionProperty.EventCategoryId"
+                        asp-items="Model.EventCategoryList.ToSelectListItem(Model.EventActionProperty.EventCategoryId)">
+                </select>
+            </div>
+
+            @*<div class="form-group row">
+            <label asp-for="EventActionProperty.EventActionItemId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
+            <select class="form-control"
+                    asp-for="EventActionProperty.EventActionItemId"
+                    asp-items="Model.EventActionItemList.ToSelectListItem(Model.EventActionProperty.EventActionItemId)">
+            </select>
+            </div>*@
+
+            <div class="form-group">
+                <label asp-for="EventActionProperty.SupportEmail" class="control-label"></label>
+                <input asp-for="EventActionProperty.SupportEmail" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="EventActionProperty.SupportEmailCC" class="control-label"></label>
+                <input asp-for="EventActionProperty.SupportEmailCC" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EventActionProperty.MailTemplate" class="control-label"></label>
+                <input asp-for="EventActionProperty.MailTemplate" class="form-control" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EventActionProperty.Validate" /> @Html.DisplayNameFor(model => model.EventActionProperty.Validate)
+                </label>
+            </div>
+            <div class="form-group">
+            <label asp-for="EventActionProperty.Username" class="control-label"></label>
+            <input asp-for="EventActionProperty.Username" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.Password" class="control-label"></label>
+            <input asp-for="EventActionProperty.Password" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.HttpMethod" class="control-label"></label>
+            <input asp-for="EventActionProperty.HttpMethod" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.ExpectedHttpStatus" class="control-label"></label>
+            <input asp-for="EventActionProperty.ExpectedHttpStatus" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.DataType" class="control-label"></label>
+            <input asp-for="EventActionProperty.DataType" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.Comment" class="control-label"></label>
+            <input asp-for="EventActionProperty.Comment" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="EventActionProperty.MaxRecordsPerFile" class="control-label"></label>
+            <input asp-for="EventActionProperty.MaxRecordsPerFile" class="form-control" />
+        </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+        </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+

@@ -7,14 +7,10 @@ using System.Threading.Tasks;
 
 namespace AventraInterviewTask.Models
 {
-    public class EventActionItem
+    public class EventActionProperty:BaseClassEventAction
     {
         [Key]
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Required")]
-        public string EventActionType { get; set; }
-
 
 
         [Display(Name = "EventCategory")]
@@ -23,5 +19,11 @@ namespace AventraInterviewTask.Models
         [ForeignKey("EventCategoryId")]
         public virtual EventCategory EventCategory { get; set; }
 
+
+        [Display(Name = "EventActionItem")]
+        public int EventActionItemId { get; set; }
+
+        [ForeignKey("EventActionItemId")]
+        public virtual EventActionItem EventActionItem { get; set; }
     }
 }

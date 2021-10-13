@@ -31,10 +31,11 @@ namespace AventraInterviewTask.Controllers
         // GET: EventActionLists/Create
         public async Task<IActionResult> Create()
         {
-            EventAndEvActionViewModel model = new EventAndEvActionViewModel()
+            EventActionViewModel model = new EventActionViewModel()
             {
                 EventCategoryList = await _context.EventCategory.ToListAsync(),
                 EventActionItem = new Models.EventActionItem(),
+                
                 EventActionItemList = await _context.EventActionItem
                                             .OrderBy(p=>p.EventActionType)
                                             .Select(p=>p.EventActionType)
@@ -50,7 +51,7 @@ namespace AventraInterviewTask.Controllers
         // GET: EventActionLists/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(EventAndEvActionViewModel model)
+        public async Task<IActionResult> Create(EventActionViewModel model)
         {
             if (ModelState.IsValid)
             {

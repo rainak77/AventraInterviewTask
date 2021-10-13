@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace AventraInterviewTask.Models.ViewModels
 {
-    public class EventAndEvActionViewModel
+    public class EventActionViewModel
     {
         public IEnumerable<EventCategory> EventCategoryList { get; set; }
         public EventActionItem EventActionItem { get; set; }

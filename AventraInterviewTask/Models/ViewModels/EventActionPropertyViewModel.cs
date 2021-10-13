@@ -5,13 +5,10 @@ using System.Threading.Tasks;
 
 namespace AventraInterviewTask.Models.ViewModels
 {
-    public class MennuItemViewModel
+    public class EventActionPropertyViewModel
     {
         public IEnumerable<EventCategory> EventCategoryList { get; set; }
-        public EventActionItem EventActionItem { get; set; }
-
-        public List<string> EventAction { get; set; }
-
-        public BaseClassEventAction BaseClassEventAction { get; set; }
+        public IEnumerable<EventActionItem> EventActionItemList { get; set; }
+        public EventActionProperty EventActionProperty { get; set; }
     }
 }
