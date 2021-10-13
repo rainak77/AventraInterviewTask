@@ -74,5 +74,15 @@ namespace AventraInterviewTask.Controllers
         }
 
 
+        [ActionName("GetEventActionItem")]
+        public async Task<IActionResult> GetEventActionItem(int id)
+        {
+            List<EventActionItem> Items = new List<EventActionItem>();
+            Items = await (from Item in _context.EventActionItem 
+                                where Item.EventCategoryId == id 
+                                select Item).ToListAsync();
+
+            return Json(new SelectList(Items, "Id", "EventActionType"));
+        }
     }
 }
