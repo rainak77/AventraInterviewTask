@@ -81,8 +81,9 @@ namespace AventraInterviewTask.Controllers
             Items = await (from Item in _context.EventActionItem 
                                 where Item.EventCategoryId == id 
                                 select Item).ToListAsync();
-
             return Json(new SelectList(Items, "Id", "EventActionType"));
         }
+
+       
     }
 }

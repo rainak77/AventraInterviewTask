@@ -43,19 +43,20 @@ namespace AventraInterviewTask.Controllers
 
         // POST: EventActionProperties/Create
         
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create(EventActionProperty eventActionProperty)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        _context.Add(eventActionProperty);
-        //        await _context.SaveChangesAsync();
-        //        return RedirectToAction(nameof(Index));
-        //    }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(EventActionPropertyViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.EventActionProperty.EventActionItemId = 2;
+                _context.EventActionProperty.Add(model.EventActionProperty);
+                await _context.SaveChangesAsync();
+               return RedirectToAction(nameof(Index));
+            }
             
-        //    return View(eventActionProperty);
-        //}
+            return View(model);
+        }
 
         
 

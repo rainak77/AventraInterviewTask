@@ -7,105 +7,112 @@
 
 <h1>Create</h1>
 
-<h4>EventActionProperty</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row w-auto">
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-md-5 w-auto">
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
+                    <select class="form-control" id="CategoryId"
+                            asp-for="EventActionProperty.EventCategoryId"
+                            asp-items="Model.EventCategoryList.ToSelectListItem(Model.EventActionProperty.EventCategoryId)">
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EventActionProperty.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
-                <select class="form-control" id="CategoryId"
-                        asp-for="EventActionProperty.EventCategoryId"
-                        asp-items="Model.EventCategoryList.ToSelectListItem(Model.EventActionProperty.EventCategoryId)">
-                </select>
-            </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.EventActionItemId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
+                    <select class="form-control"
+                            id="ActionItemId" name="EventActionItemId"
+                            asp-for="EventActionProperty.EventActionItemId"
+                            asp-items="@(new SelectList(string.Empty,"Id","EventActionType"))">
+                    </select>
+                </div>
 
-            <div class="form-group">
-            <label asp-for="EventActionProperty.EventActionItemId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
-            <select class="form-control"
-                    id="ActionItemId" name="EventActionItemId"
-                    asp-for="EventActionProperty.EventActionItemId"
-                    asp-items="@(new SelectList(string.Empty,"Id","EventActionType"))">
-            </select>
-            </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.SupportEmail" class="control-label"></label>
+                    <input asp-for="EventActionProperty.SupportEmail" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.SupportEmailCC" class="control-label"></label>
+                    <input asp-for="EventActionProperty.SupportEmailCC" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.MailTemplate" class="control-label"></label>
+                    <input asp-for="EventActionProperty.MailTemplate" class="form-control" />
+                </div>
 
-            <div class="form-group">
-                <label asp-for="EventActionProperty.SupportEmail" class="control-label"></label>
-                <input asp-for="EventActionProperty.SupportEmail" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.Username" class="control-label"></label>
+                    <input asp-for="EventActionProperty.Username" class="form-control" />
+                </div>
+                <div class="form-group form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="EventActionProperty.Validate" /> @Html.DisplayNameFor(model => model.EventActionProperty.Validate)
+                    </label>
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="EventActionProperty.SupportEmailCC" class="control-label"></label>
-                <input asp-for="EventActionProperty.SupportEmailCC" class="form-control" />
-            </div>
+            <div class="col-md-5 w-auto">
 
-            <div class="form-group">
-                <label asp-for="EventActionProperty.MailTemplate" class="control-label"></label>
-                <input asp-for="EventActionProperty.MailTemplate" class="form-control" />
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.Password" class="control-label"></label>
+                    <input asp-for="EventActionProperty.Password" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.HttpMethod" class="control-label"></label>
+                    <input asp-for="EventActionProperty.HttpMethod" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.ExpectedHttpStatus" class="control-label"></label>
+                    <input asp-for="EventActionProperty.ExpectedHttpStatus" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.DataType" class="control-label"></label>
+                    <input asp-for="EventActionProperty.DataType" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.Comment" class="control-label"></label>
+                    <input asp-for="EventActionProperty.Comment" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.MaxRecordsPerFile" class="control-label"></label>
+                    <input asp-for="EventActionProperty.MaxRecordsPerFile" class="form-control" />
+                </div>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="EventActionProperty.Validate" /> @Html.DisplayNameFor(model => model.EventActionProperty.Validate)
-                </label>
-            </div>
-            <div class="form-group">
-            <label asp-for="EventActionProperty.Username" class="control-label"></label>
-            <input asp-for="EventActionProperty.Username" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
         <div class="form-group">
-            <label asp-for="EventActionProperty.Password" class="control-label"></label>
-            <input asp-for="EventActionProperty.Password" class="form-control" />
+           <button><a asp-action="Index">Back to List</a></button> 
         </div>
-        <div class="form-group">
-            <label asp-for="EventActionProperty.HttpMethod" class="control-label"></label>
-            <input asp-for="EventActionProperty.HttpMethod" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="EventActionProperty.ExpectedHttpStatus" class="control-label"></label>
-            <input asp-for="EventActionProperty.ExpectedHttpStatus" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="EventActionProperty.DataType" class="control-label"></label>
-            <input asp-for="EventActionProperty.DataType" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="EventActionProperty.Comment" class="control-label"></label>
-            <input asp-for="EventActionProperty.Comment" class="form-control" />
-        </div>
-        <div class="form-group">
-            <label asp-for="EventActionProperty.MaxRecordsPerFile" class="control-label"></label>
-            <input asp-for="EventActionProperty.MaxRecordsPerFile" class="form-control" />
-        </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-        </div>
+    </form>
+    
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 
 @section Scripts{ 
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            alert('Test')
-            var x = getEventActionItem();
-            alert(x)
-            $('#CategoryId').change(function () {
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript">
+
+        $(document).ready(function () { 
+            var x = getEventActionItem();        
+            $("#CategoryId").change(function () {
                 getEventActionItem();
             });
         });
 
 
         function getEventActionItem() {
+            alert('Test')
+
             var url = '@Url.Content("~/")' + "EventActionLists/GetEventActionItem";
-            var source = '#CategoryId';
-            $.getJSON(url, { id: $(source).val() }, function(data) {
+            var source = "#CategoryId";
+            $.getJSON(url, { id: $(source).val() }, function (data) {
                 var items = '';
                 $('#EventActionItemId').empty();
                 $.each(data, function (i, eventActionItem) {
