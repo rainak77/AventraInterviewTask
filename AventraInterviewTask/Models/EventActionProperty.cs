@@ -12,6 +12,9 @@ namespace AventraInterviewTask.Models
         [Key]
         public int Id { get; set; }
 
+        public string EventType { get; set; }
+        public string EventActionType { get; set; }
+
 
         [Display(Name = "EventCategory")]
         public int EventCategoryId { get; set; }

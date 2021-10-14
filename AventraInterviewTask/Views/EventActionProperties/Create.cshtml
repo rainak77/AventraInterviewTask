@@ -23,9 +23,8 @@
 
                 <div class="form-group">
                     <label asp-for="EventActionProperty.EventActionItemId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
-                    <select class="form-control" id="ActionItemId"
-                            asp-for="EventActionProperty.EventActionItemId" 
-                            asp-items="@(new SelectList(string.Empty,"Id","EventActionType"))">
+                    <select  asp-for="EventActionProperty.EventActionItemId" id="ActionItemId"                            
+                            asp-items="@(new SelectList(string.Empty,"Id","EventActionType"))" class="form-control">
                     </select>
                 </div>
 
@@ -110,7 +109,6 @@
 
         function modal(e) {
             console.log(e)
-            alert('test')
         }
 
         function getEventActionItem() {

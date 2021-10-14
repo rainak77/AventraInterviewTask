@@ -3,14 +3,16 @@ using AventraInterviewTask.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AventraInterviewTask.Migrations
 {
     [DbContext(typeof(EventContext))]
-    partial class EventContextModelSnapshot : ModelSnapshot
+    [Migration("20211014204004_newpropertEventtype")]
+    partial class newpropertEventtype
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,9 +56,6 @@ namespace AventraInterviewTask.Migrations
 
                     b.Property<int>("EventActionItemId")
                         .HasColumnType("int");
-
-                    b.Property<string>("EventActionType")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("EventCategoryId")
                         .HasColumnType("int");
