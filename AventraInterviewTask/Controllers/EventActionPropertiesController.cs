@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using AventraInterviewTask.Models;
 using AventraInterviewTask.Models.ViewModels;
 using System.Xml.Serialization;
+using System.Xml;
+using System.IO;
 
 namespace AventraInterviewTask.Controllers
 {
@@ -50,8 +52,38 @@ namespace AventraInterviewTask.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.EventActionProperty.EventActionType = await (from item in _context.EventActionItem where item.Id == model.EventActionProperty.EventActionItemId select item.EventActionType).FirstOrDefaultAsync();
-                model.EventActionProperty.EventType = await (from item in _context.EventCategory where item.Id == model.EventActionProperty.EventCategoryId select item.EventType).FirstOrDefaultAsync();
+                var data=model.EventActionProperty;
+                data.EventActionType = await (from item in _context.EventActionItem where item.Id == data.EventActionItemId select item.EventActionType).FirstOrDefaultAsync();
+                data.EventType = await (from item in _context.EventCategory where item.Id == data.EventCategoryId select item.EventType).FirstOrDefaultAsync();
+
+                EventActionProperty xmlmodel = new EventActionProperty()
+                {
+                    EventActionItem = data.EventActionItem,
+                    EventCategory = data.EventCategory,
+                    ExpectedHttpStatus = data.ExpectedHttpStatus,
+                    SupportEmail= data.SupportEmail,
+                    SupportEmailCC= data.SupportEmailCC,
+                    MailTemplate= data.MailTemplate,
+                    MaxRecordsPerFile= data.MaxRecordsPerFile,
+                    HttpMethod= data.HttpMethod,
+                    Password= data.Password,
+                    Username= data.Username,
+                    Comment= data.Comment,
+                    Validate= data.Validate,
+                    DataType= data.DataType
+                };
+
+
+                XmlSerializer xsSubmit = new XmlSerializer(typeof(EventActionProperty));
+                var xml ="";
+                using (var sww = new StringWriter())
+                {
+                    using (XmlWriter writer = XmlWriter.Create(sww))
+                    {
+                        xsSubmit.Serialize(writer, xmlmodel);
+                        xml = sww.ToString(); //  XML data
+                    }
+                }
                 _context.EventActionProperty.Add(model.EventActionProperty);
                 await _context.SaveChangesAsync();
                return RedirectToAction(nameof(Index));
