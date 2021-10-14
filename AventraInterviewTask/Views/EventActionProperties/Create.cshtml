@@ -97,7 +97,7 @@
 
 @section Scripts{ 
 
-    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript">
+    <script type="text/javascript">
 
         $(document).ready(function () { 
              getEventActionItem();        
@@ -108,19 +108,20 @@
 
 
         function getEventActionItem() {
-            alert('Test')
 
             var url = '@Url.Content("~/")' + "EventActionLists/GetEventActionItem";
             var source = "#CategoryId";
             $.getJSON(url, { id: $(source).val() }, function (data) {
-                var items = '';
+                var items = "";
                 $('#EventActionItemId').empty();
                 $.each(data, function (i, eventActionItem) {
-                    items += "<option value='" + eventActionItem.value + "' >" + eventActionItem.text + "</option>"
+                    console.log(eventActionItem)
+                    items += "<option value= '" + eventActionItem.value + "'  >" + eventActionItem.text + "</option>"
+
                 });
+                $("#ActionItemId").html(items);
             })
 
-            $("#ActionItemId").html(items);
         }
     </script>
 }
