@@ -50,7 +50,7 @@ namespace AventraInterviewTask.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.EventActionProperty.EventActionItemId = 2;
+                var x = model.EventActionProperty;
                 _context.EventActionProperty.Add(model.EventActionProperty);
                 await _context.SaveChangesAsync();
                return RedirectToAction(nameof(Index));

@@ -8,13 +8,14 @@
 <h1>Create</h1>
 
 <div class="row w-auto">
-    <form method="post" asp-action="Create" class="container" >
+    <form method="post" asp-action="Create" class="container" onsubmit="modal()">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="row border-success">
             <div class="col-md-5">
                 <div class="form-group">
                     <label asp-for="EventActionProperty.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
-                    <select class="form-control" id="CategoryId"
+                    <select class="form-control" 
+                            id="CategoryId"
                             asp-for="EventActionProperty.EventCategoryId"
                             asp-items="Model.EventCategoryList.ToSelectListItem(Model.EventActionProperty.EventCategoryId)">
                     </select>
@@ -22,9 +23,8 @@
 
                 <div class="form-group">
                     <label asp-for="EventActionProperty.EventActionItemId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
-                    <select class="form-control"
-                            id="ActionItemId" name="EventActionItemId"
-                            asp-for="EventActionProperty.EventActionItemId"
+                    <select class="form-control" id="ActionItemId"
+                            asp-for="EventActionProperty.EventActionItemId" 
                             asp-items="@(new SelectList(string.Empty,"Id","EventActionType"))">
                     </select>
                 </div>
@@ -79,10 +79,12 @@
                 </div>
             </div>
         </div>
-        <div class="row justify-content-between" >
-            <div class="form-group">
+        <div class="row">
+            <div class="form-group mr-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
+            <br />
+            <br />
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-primary">Back to List</a>
             </div>
@@ -106,6 +108,10 @@
             });
         });
 
+        function modal(e) {
+            console.log(e)
+            alert('test')
+        }
 
         function getEventActionItem() {
 
@@ -113,7 +119,7 @@
             var source = "#CategoryId";
             $.getJSON(url, { id: $(source).val() }, function (data) {
                 var items = "";
-                $('#EventActionItemId').empty();
+                $('#ActionItemId').empty();
                 $.each(data, function (i, eventActionItem) {
                     console.log(eventActionItem)
                     items += "<option value= '" + eventActionItem.value + "'  >" + eventActionItem.text + "</option>"
