@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AventraInterviewTask.Models;
 using AventraInterviewTask.Models.ViewModels;
+using System.Xml.Serialization;
 
 namespace AventraInterviewTask.Controllers
 {
@@ -54,7 +55,6 @@ namespace AventraInterviewTask.Controllers
                 await _context.SaveChangesAsync();
                return RedirectToAction(nameof(Index));
             }
-            
             return View(model);
         }
 
