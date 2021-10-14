@@ -7,12 +7,11 @@
 
 <h1>Create</h1>
 
-<hr />
 <div class="row w-auto">
-    <form method="post" asp-action="Create">
+    <form method="post" asp-action="Create" class="container" >
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="row">
-            <div class="col-md-5 w-auto">
+        <div class="row border-success">
+            <div class="col-md-5">
                 <div class="form-group">
                     <label asp-for="EventActionProperty.EventCategoryId" class="col-form-label font-weight-bold font-weight-bold font-weight-bold"></label>
                     <select class="form-control" id="CategoryId"
@@ -53,12 +52,7 @@
                     </label>
                 </div>
             </div>
-            <div class="col-md-5 w-auto">
-
-                <div class="form-group">
-                    <label asp-for="EventActionProperty.Password" class="control-label"></label>
-                    <input asp-for="EventActionProperty.Password" class="form-control" />
-                </div>
+            <div class="col-md-5">
                 <div class="form-group">
                     <label asp-for="EventActionProperty.HttpMethod" class="control-label"></label>
                     <input asp-for="EventActionProperty.HttpMethod" class="form-control" />
@@ -79,15 +73,21 @@
                     <label asp-for="EventActionProperty.MaxRecordsPerFile" class="control-label"></label>
                     <input asp-for="EventActionProperty.MaxRecordsPerFile" class="form-control" />
                 </div>
+                <div class="form-group">
+                    <label asp-for="EventActionProperty.Password" class="control-label"></label>
+                    <input asp-for="EventActionProperty.Password" class="form-control" />
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <input type="submit" value="Create" class="btn btn-primary" />
+        <div class="row justify-content-between" >
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
         </div>
-        <div class="form-group">
-           <button><a asp-action="Index">Back to List</a></button> 
-        </div>
+        
     </form>
     
 </div>
