@@ -10,6 +10,8 @@ using AventraInterviewTask.Models.ViewModels;
 using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
+using Microsoft.AspNetCore.Http;
+using System.Data;
 
 namespace AventraInterviewTask.Controllers
 {
@@ -32,7 +34,7 @@ namespace AventraInterviewTask.Controllers
 
 
         // GET: EventActionProperties/Create
-        public async Task<IActionResult> Create()
+       public async Task<IActionResult> Create()
         {
             EventActionPropertyViewModel model = new EventActionPropertyViewModel()
             {
@@ -56,34 +58,15 @@ namespace AventraInterviewTask.Controllers
                 data.EventActionType = await (from item in _context.EventActionItem where item.Id == data.EventActionItemId select item.EventActionType).FirstOrDefaultAsync();
                 data.EventType = await (from item in _context.EventCategory where item.Id == data.EventCategoryId select item.EventType).FirstOrDefaultAsync();
 
-                EventActionProperty xmlmodel = new EventActionProperty()
-                {
-                    EventActionItem = data.EventActionItem,
-                    EventCategory = data.EventCategory,
-                    ExpectedHttpStatus = data.ExpectedHttpStatus,
-                    SupportEmail= data.SupportEmail,
-                    SupportEmailCC= data.SupportEmailCC,
-                    MailTemplate= data.MailTemplate,
-                    MaxRecordsPerFile= data.MaxRecordsPerFile,
-                    HttpMethod= data.HttpMethod,
-                    Password= data.Password,
-                    Username= data.Username,
-                    Comment= data.Comment,
-                    Validate= data.Validate,
-                    DataType= data.DataType
-                };
 
+                XmlSerializer xsSubmit = new XmlSerializer(data.GetType());
 
-                XmlSerializer xsSubmit = new XmlSerializer(typeof(EventActionProperty));
-                var xml ="";
-                using (var sww = new StringWriter())
+                var filename = model.EventActionProperty.Username + ".xml";
+                using (var sww = new FileStream(@"d:\"+ filename, FileMode.Create))
                 {
-                    using (XmlWriter writer = XmlWriter.Create(sww))
-                    {
-                        xsSubmit.Serialize(writer, xmlmodel);
-                        xml = sww.ToString(); //  XML data
-                    }
+                    xsSubmit.Serialize(sww, data);   
                 }
+
                 _context.EventActionProperty.Add(model.EventActionProperty);
                 await _context.SaveChangesAsync();
                return RedirectToAction(nameof(Index));
@@ -92,7 +75,4 @@ namespace AventraInterviewTask.Controllers
         }
 
         
-
-        
-    }
-}
+    }}
